@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../data/models/note_model.dart';
-import '../screens/providers/note_provider.dart';
+import '../../data/models/note_model.dart';
+import '../../screens/providers/note_provider.dart';
 import 'edit_note_dialog.dart';
 
 class NoteCard extends StatefulWidget {

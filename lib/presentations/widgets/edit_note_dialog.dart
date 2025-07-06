@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../data/models/note_model.dart';
+import '../../data/models/note_model.dart';
 
 class EditNoteDialog extends StatefulWidget {
   final NoteModel note;
