@@ -45,11 +45,11 @@ class _NotesScreenState extends State<NotesScreen>
         );
 
     // Fetch notes when screen initializes
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   Provider.of<NoteProvider>(context, listen: false).fetchNotes();
-    //   _fadeController.forward();
-    //   _slideController.forward();
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<NoteProvider>(context, listen: false).fetchNotes();
+      _fadeController.forward();
+      _slideController.forward();
+    });
   }
 
   @override
@@ -65,58 +65,58 @@ class _NotesScreenState extends State<NotesScreen>
       builder: (context) => const AddNoteDialog(),
     );
 
-    // if (result != null && mounted) {
-    //   final noteProvider = Provider.of<NoteProvider>(context, listen: false);
-    //   final success = await noteProvider.addNote(result);
+    if (result != null && mounted) {
+      final noteProvider = Provider.of<NoteProvider>(context, listen: false);
+      final success = await noteProvider.addNote(result);
 
-    //   if (success && mounted) {
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(
-    //         content: Row(
-    //           children: [
-    //             const Icon(Icons.check_circle, color: Colors.white, size: 20),
-    //             const SizedBox(width: 12),
-    //             const Expanded(
-    //               child: Text(
-    //                 'Note added successfully!',
-    //                 style: TextStyle(fontWeight: FontWeight.w500),
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //         backgroundColor: const Color(0xFF10B981),
-    //         behavior: SnackBarBehavior.floating,
-    //         shape: RoundedRectangleBorder(
-    //           borderRadius: BorderRadius.circular(12),
-    //         ),
-    //         margin: const EdgeInsets.all(16),
-    //       ),
-    //     );
-    //   } else if (mounted) {
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(
-    //         content: Row(
-    //           children: [
-    //             const Icon(Icons.error_outline, color: Colors.white, size: 20),
-    //             const SizedBox(width: 12),
-    //             Expanded(
-    //               child: Text(
-    //                 noteProvider.error ?? 'Failed to add note',
-    //                 style: const TextStyle(fontWeight: FontWeight.w500),
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //         backgroundColor: const Color(0xFFEF4444),
-    //         behavior: SnackBarBehavior.floating,
-    //         shape: RoundedRectangleBorder(
-    //           borderRadius: BorderRadius.circular(12),
-    //         ),
-    //         margin: const EdgeInsets.all(16),
-    //       ),
-    //     );
-    //   }
-    // }
+      if (success && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.check_circle, color: Colors.white, size: 20),
+                const SizedBox(width: 12),
+                const Expanded(
+                  child: Text(
+                    'Note added successfully!',
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: const Color(0xFF10B981),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            margin: const EdgeInsets.all(16),
+          ),
+        );
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.error_outline, color: Colors.white, size: 20),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    noteProvider.error ?? 'Failed to add note',
+                    style: const TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: const Color(0xFFEF4444),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            margin: const EdgeInsets.all(16),
+          ),
+        );
+      }
+    }
   }
 
   Future<void> _showLogoutDialog() async {
@@ -181,41 +181,41 @@ class _NotesScreenState extends State<NotesScreen>
                 'Logout',
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
-              // onPressed: () async {
-              //   Navigator.of(context).pop();
-              //   await Provider.of<AuthProvider>(
-              //     context,
-              //     listen: false,
-              //   ).signOut();
-              //   if (mounted) {
-              //     ScaffoldMessenger.of(context).showSnackBar(
-              //       SnackBar(
-              //         content: Row(
-              //           children: [
-              //             const Icon(
-              //               Icons.logout,
-              //               color: Colors.white,
-              //               size: 20,
-              //             ),
-              //             const SizedBox(width: 12),
-              //             const Expanded(
-              //               child: Text(
-              //                 'Logged out successfully!',
-              //                 style: TextStyle(fontWeight: FontWeight.w500),
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //         backgroundColor: const Color(0xFF3B82F6),
-              //         behavior: SnackBarBehavior.floating,
-              //         shape: RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.circular(12),
-              //         ),
-              //         margin: const EdgeInsets.all(16),
-              //       ),
-              //     );
-              //   }
-              // },
+              onPressed: () async {
+                Navigator.of(context).pop();
+                await Provider.of<AuthProvider>(
+                  context,
+                  listen: false,
+                ).signOut();
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Row(
+                        children: [
+                          const Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 12),
+                          const Expanded(
+                            child: Text(
+                              'Logged out successfully!',
+                              style: TextStyle(fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
+                      backgroundColor: const Color(0xFF3B82F6),
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      margin: const EdgeInsets.all(16),
+                    ),
+                  );
+                }
+              },
             ),
           ],
         );
